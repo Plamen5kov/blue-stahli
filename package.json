@@ -1,0 +1,22 @@
+{
+  "name": "blue-stahli-",
+  "version": "1.0.0",
+  "description": "experimenting with puppeteer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Plamen5kov/blue-stahli-.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Plamen5kov/blue-stahli-/issues"
+  },
+  "homepage": "https://github.com/Plamen5kov/blue-stahli-#readme",
+  "dependencies": {
+    "puppeteer": "^14.1.1"
+  }
+}
