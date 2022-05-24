@@ -27,6 +27,7 @@ services:
       DB: ${DB}
       HOST: ${HOST}
       PORT: ${PORT}
+      DB_DIALECT: ${DB_DIALECT}
     restart: always
     build: ./server
     ports:

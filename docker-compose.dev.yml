@@ -27,7 +27,7 @@ services:
       DB: ${DB}
       HOST: ${HOST}
       PORT: ${PORT}
-      BROWSER_DOWNLOAD_PATH: ${BROWSER_DOWNLOAD_PATH}
+      DB_DIALECT: ${DB_DIALECT}
     build:
       context: ./server
       dockerfile: Dockerfile.dev
