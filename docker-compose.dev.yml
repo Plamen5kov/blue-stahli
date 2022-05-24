@@ -20,8 +20,10 @@ services:
       DB: ${DB}
       HOST: ${HOST}
       PORT: ${PORT}
+      BROWSER_DOWNLOAD_PATH: ${BROWSER_DOWNLOAD_PATH}
     build:
       context: ./server
+      dockerfile: Dockerfile.dev
     ports:
       - 5001:5000
       - 9229:9229

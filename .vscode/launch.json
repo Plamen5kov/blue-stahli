@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "name": "backend docker debugger",
+            "address": "localhost:5001",
+            "localRoot": "${workspaceFolder}/server",
+            "port": 9229,
+            "remoteRoot": "/app",
+            "request": "attach",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        }
+    ]
+}
