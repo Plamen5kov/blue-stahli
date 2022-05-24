@@ -10,7 +10,8 @@ module.exports = (sequelize) => {
   }, {
     sequelize,
     timestamps: true,
-    paranoid: true
+    paranoid: true,
+    tableName: 'skill'
   })
 
   return Skill

@@ -21,7 +21,8 @@ module.exports = (sequelize) => {
   }, {
     sequelize,
     timestamps: true,
-    paranoid: true
+    paranoid: true,
+    tableName: 'users'
   })
 
   return User

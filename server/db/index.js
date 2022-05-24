@@ -8,7 +8,7 @@ const sequelize = init(
 )
 const { defineRelations } = require('./model-relations')
 
-require('../models/Certifications')(sequelize)
+require('../models/Certification')(sequelize)
 require('../models/Education')(sequelize)
 require('../models/Experience')(sequelize)
 require('../models/Skills')(sequelize)

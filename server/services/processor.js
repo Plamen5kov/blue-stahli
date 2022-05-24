@@ -20,8 +20,31 @@ jobQueue.process(paralellJobsRunningAtOneTime, async (job) => {
         const createdUser = await models.User.create({
             id: uuid.v4(),
             name: extractedData.userInfo.name,
-            about: extractedData.userInfo.about
+            about: extractedData.userInfo.about,
+            pdfPath: extractedData.pathToPdf,
+            experiences: extractedData.experience,
+            certifications: extractedData.certification,
+            educations: extractedData.education,
+        }, {
+            include: [
+                {
+                    model: models.Experience,
+                    as: 'experiences'
+                },
+                {
+                    model: models.Certification,
+                    as: 'certifications'
+                },
+                {
+                    model: models.Education,
+                    as: 'educations'
+                }
+            ]
         })
+
+        const skills = await models.Skill.bulkCreate(extractedData.skills.map(skill => { return { name: skill } }))
+
+        createdUser.setSkills(skills)
 
         return Promise.resolve(true);
 

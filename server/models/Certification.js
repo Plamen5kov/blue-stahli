@@ -1,4 +1,4 @@
-const { STRING, Model } = require('sequelize')
+const { STRING, Model, TEXT } = require('sequelize')
 
 module.exports = (sequelize) => {
   class Certification extends Model { }
@@ -13,12 +13,13 @@ module.exports = (sequelize) => {
       type: STRING,
     },
     description: {
-      type: STRING,
+      type: TEXT,
     }
   }, {
     sequelize,
     timestamps: true,
-    paranoid: true
+    paranoid: true,
+    tableName: 'certification'
   })
 
   return Certification
