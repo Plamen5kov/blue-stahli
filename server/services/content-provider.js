@@ -167,7 +167,6 @@ const init = async (browserDownloadPath, credentials, url) => {
 
         await openProfile(page)
 
-        console.log(__dirname)
         const downloadPath = browserDownloadPath || __dirname
         downloadPdf(page, downloadPath)
 
