@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 require('express-async-errors')
-const { sequelize } = require('./db')
+const sequelize = require('./db')
 const notFoundMiddleware = require('./middleware/not-found')
 const errorHandlerMiddleware = require('./middleware/error-handler')
 
