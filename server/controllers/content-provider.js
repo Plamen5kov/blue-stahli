@@ -24,6 +24,7 @@ const getContent = async (req, res, next) => {
         )
 
         return await models.User.create({
+          id: uuid.v4(),
           name: extractedData.userInfo.name,
           about: extractedData.userInfo.about
         })

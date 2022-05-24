@@ -3,7 +3,7 @@ const { DataTypes, Model, UUID, UUIDV4 } = require('sequelize')
 module.exports = (sequelize) => {
   class User extends Model { }
   User.init({
-    uuid: {
+    id: {
       type: UUID,
       defaultValue: UUIDV4,
       primaryKey: true
