@@ -1,4 +1,4 @@
-const { DataTypes, Model, UUID, UUIDV4 } = require('sequelize')
+const { Model, UUID, UUIDV4, STRING } = require('sequelize')
 
 module.exports = (sequelize) => {
   class User extends Model { }
@@ -9,11 +9,14 @@ module.exports = (sequelize) => {
       primaryKey: true
     },
     name: {
-      type: DataTypes.STRING,
+      type: STRING,
       allowNull: false,
     },
     about: {
-      type: DataTypes.STRING
+      type: STRING
+    },
+    pdfPath: {
+      type: STRING
     }
   }, {
     sequelize,

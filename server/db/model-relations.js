@@ -1,17 +1,17 @@
 
 const defineRelations = (db) => {
-	const common = (options) => ({
-		...options,
-		onDelete: 'CASCADE',
-		onUpdate: 'CASCADE',
-	});
+	db.User.hasMany(db.Experience)
+	db.Experience.belongsTo(db.User)
 
-	
-	//belongsTo just means that a FK will be created in the source table
-	// db.Afterburner.belongsTo(db.ProductAttributes, common({ foreignKey: 'product_attribute_id' }))
+	db.User.belongsToMany(db.Skill, { through: 'SdgGoalsToHumanRightsMap', timestamps: false })
+	db.Skill.belongsToMany(db.User, { through: 'SdgGoalsToHumanRightsMap', timestamps: false })
 
+	db.User.hasMany(db.Education)
+	db.Education.belongsTo(db.User)
+
+	db.User.hasMany(db.Certification)
+	db.Certification.belongsTo(db.User)
 }
-
 
 module.exports = {
 	defineRelations

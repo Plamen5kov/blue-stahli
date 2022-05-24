@@ -23,7 +23,7 @@ jobQueue.process(paralellJobsRunningAtOneTime, async (job) => {
             about: extractedData.userInfo.about
         })
 
-        return Promise.resolve({ createdUser });
+        return Promise.resolve(true);
 
     } catch (error) {
         Promise.reject(error);
