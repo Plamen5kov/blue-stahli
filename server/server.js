@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }))
 //REQUEST HANDLERS
 app.use('/api/v1/contentProvider', contentProvider)
 app.use('/api/v1/job', job)
-app.use('/api/v1/user', user)
+app.use('/api/v1/users', user)
 
 // ERROR HANDLING MIDDLEWARE
 app.use(notFoundMiddleware)
