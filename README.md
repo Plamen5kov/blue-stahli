@@ -240,3 +240,7 @@ GET {{BASE_URL}}/users/
 1.3 return
 
 the pdf file
+
+## Database models
+
+![Screenshot from 2022-05-25 08-39-10](https://user-images.githubusercontent.com/5918351/170188119-83aa2614-edee-4f1a-82fb-92e5d2baa7f9.png)
