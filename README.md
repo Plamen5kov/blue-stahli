@@ -246,6 +246,9 @@ the pdf file
 ![Screenshot from 2022-05-25 08-39-10](https://user-images.githubusercontent.com/5918351/170188119-83aa2614-edee-4f1a-82fb-92e5d2baa7f9.png)
 
 `user` many to many `skills` << so if more unique users are added the skills table can be reused
+
 `user` one to many `education`
+
 `user` one to many `certification`
+
 `user` one to many `experience`
