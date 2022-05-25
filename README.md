@@ -9,6 +9,21 @@ If you want to develop you'd need to have nodejs installed. As of now I'm using:
 
 `.env` and `.env.dev` files used for `docker-compose.yml` and `docker-compose.dev.yml` respectively
 
+example `.env.dev` `.env`:
+
+```
+HOST=postgres
+PORT=5000
+
+DB_PASSWORD=asdf12345r12d1d!@R!@T%
+DB_USER=root
+DB=glassdoor
+DB_DIALECT=postgres
+
+APP_ENV=development
+```
+
+
 ## how to develop:
 
 `git clone git@github.com:Plamen5kov/blue-stahli.git`
