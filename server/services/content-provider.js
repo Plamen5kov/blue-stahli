@@ -64,7 +64,6 @@ const openProfile = async (page) => {
 
 
 const downloadPdf = async (page, downloadPath) => {
-    // try {
     await page._client.send('Page.setDownloadBehavior', {
         behavior: 'allow',
         downloadPath: downloadPath
@@ -76,9 +75,6 @@ const downloadPdf = async (page, downloadPath) => {
             .parentNode.parentNode.firstChild // relative path to download button
             .click()
     })
-    // } catch (e) {
-    //     throw new PupeteerError(`Unable to download pdf: ${e.message}`)
-    // }
 }
 
 const viewAsEmployer = async (page) => {
@@ -115,8 +111,6 @@ const waitForPdfToDownload = async (downloadPath) => new Promise((resolve, rejec
 const extractUserData = async (page) => {
     try {
         return await page.evaluate(() => {
-            //TODO: plamen5kov: handle out of bounds exception (wrapper)
-
             //get employee info
             const userInfo = {
                 name: Array.from(document.querySelectorAll('h3[class*=SectionHeaderStyles__name]'))[0].innerText,
@@ -229,5 +223,3 @@ const init = async (browserDownloadPath, credentials, url) => {
 module.exports = {
     init
 }
-
-// init(__dirname, { username: 'ravi.van.test@gmail.com', password: 'ravi.van.test@gmail.com' }, 'https://www.glassdoor.com/index.htm')

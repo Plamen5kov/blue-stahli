@@ -9,10 +9,11 @@ const paralellJobsRunningAtOneTime = 5
 
 jobQueue.process(paralellJobsRunningAtOneTime, async (job) => {
     const { username, password, url, jobId } = job.data
+    const jobStatus = await models.Job.create({ id: jobId, status: "active", errMessage: {} })
 
     try {
         const extractedData = await contentProvider.init(
-            "",
+            __dirname,
             { username, password },
             url
         )
@@ -46,13 +47,19 @@ jobQueue.process(paralellJobsRunningAtOneTime, async (job) => {
 
         createdUser.setSkills(skills)
 
+        jobStatus.status = 'done'
+        jobStatus.save()
         return Promise.resolve(true)
 
     } catch (e) {
+        jobStatus.errMessage = { msg: e.toString() }
         if (e instanceof PupeteerError) {
-            await models.Job.create({ id: jobId, status: "pupeteer error", errMessage: { msg: e.toString() } })
+            jobStatus.status = 'pupeteer error'
+            jobStatus.save()
         } else if (e instanceof Error) {
             await models.Job.create({ id: jobId, status: "db error", errMessage: { msg: e.toString() } })
+            jobStatus.status = 'db error'
+            jobStatus.save()
         }
         Promise.reject(error);
     }
