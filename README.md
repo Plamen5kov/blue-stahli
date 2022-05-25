@@ -7,7 +7,7 @@ You need to have docker installed. As of now I'm using `Docker version 20.10.16,
 
 If you want to develop you'd need to have nodejs installed. As of now I'm using: `v16.13.0` that's `LTS`
 
-`.env` and `.env.dev` files used for `docker-compose.yml` and `docker-compose.dev.yml` respectively
+`.env` and `.env.dev` files used for `docker-compose.yml` and `docker-compose.dev.yml` respectively. They should be placed in the root folder of the project as siblings to the `docker-compose` files.
 
 example `.env.dev` `.env`:
 
