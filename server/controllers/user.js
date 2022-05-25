@@ -2,7 +2,7 @@ const { StatusCodes } = require('http-status-codes')
 const { models } = require('../db/')
 
 // Public Route
-// GET /api/v1/job:id
+// GET /api/v1/users:id
 const userInfo = async (req, res, next) => {
   const { email } = req.query
 

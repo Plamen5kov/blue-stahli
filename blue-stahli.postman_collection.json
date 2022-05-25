@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "60df1ef1-0538-4c7b-854d-08f85833dc55",
+		"name": "blue-stahli",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get content",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "ravi.van.test@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "ravi.van.test@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "url",
+							"value": "https://www.glassdoor.com/index.htm",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/contentProvider",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"contentProvider"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get job status",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "ravi.van.test@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "ravi.van.test@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "url",
+							"value": "https://www.glassdoor.com/index.htm",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/job/d8d7d6a6-b228-457d-be4d-16fb1de83523",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"job",
+						"d8d7d6a6-b228-457d-be4d-16fb1de83523"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user info",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "ravi.van.test@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "ravi.van.test@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "url",
+							"value": "https://www.glassdoor.com/index.htm",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/users/?email=ravi.van.test@gmail.com",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users",
+						""
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "ravi.van.test@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
