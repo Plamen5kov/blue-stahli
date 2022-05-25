@@ -52,7 +52,7 @@ GET {{BASE_URL}}/contentProvider
 
 The endpoint will give you back a `JOB_ID` that you'll be able to use in the next endpoint to check the status of your job.
 
-2. **Get running job status**
+**Get running job status**
 
 After you've started a job, you can check it's status by using the `JOB_ID` provided by the `contentProvider` endpoint.
 
@@ -208,3 +208,20 @@ GET {{BASE_URL}}/users/
     ]
 }
 ```
+
+
+**Query extracted user info**
+
+1.1 endpoint
+
+```
+{{BASE_URL}}/downloadPdf/?email=user_email@email.com
+```
+
+1.2 query params:
+
+* `email` sarch for pdf by user email
+
+1.3 return
+
+the pdf file

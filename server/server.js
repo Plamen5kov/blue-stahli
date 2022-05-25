@@ -9,6 +9,7 @@ const errorHandlerMiddleware = require('./middleware/error-handler')
 const contentProvider = require('./routes/content-provider')
 const job = require('./routes/job')
 const user = require('./routes/user')
+const download = require('./routes/download')
 
 // MIDDLEWARE
 app.use(express.json())
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use('/api/v1/contentProvider', contentProvider)
 app.use('/api/v1/job', job)
 app.use('/api/v1/users', user)
+app.use('/api/v1/downloadPdf', download)
 
 // ERROR HANDLING MIDDLEWARE
 app.use(notFoundMiddleware)

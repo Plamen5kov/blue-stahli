@@ -132,6 +132,53 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "get user pdf",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "ravi.van.test@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "ravi.van.test@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "url",
+							"value": "https://www.glassdoor.com/index.htm",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/users/?email=ravi.van.test@gmail.com",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users",
+						""
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "ravi.van.test@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
