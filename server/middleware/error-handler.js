@@ -1,4 +1,5 @@
 const { StatusCodes } = require('http-status-codes')
+const { PupeteerError } = require('../errors')
 const errorHandlerMiddleware = (err, req, res, next) => {
   let customError = {
     // set default

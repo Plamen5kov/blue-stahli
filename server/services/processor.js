@@ -2,6 +2,7 @@ const Queue = require('bull')
 const uuid = require('uuid')
 const { models } = require('../db/')
 const contentProvider = require('../services/content-provider')
+const { PupeteerError } = require('../errors')
 
 const jobQueue = new Queue('jobs', 'redis://redis:6379')
 const paralellJobsRunningAtOneTime = 5
@@ -10,9 +11,8 @@ jobQueue.process(paralellJobsRunningAtOneTime, async (job) => {
     const { username, password, url, jobId } = job.data
 
     try {
-        console.log(`processing job: ${jobId}`)
         const extractedData = await contentProvider.init(
-            __dirname,
+            "",
             { username, password },
             url
         )
@@ -46,9 +46,14 @@ jobQueue.process(paralellJobsRunningAtOneTime, async (job) => {
 
         createdUser.setSkills(skills)
 
-        return Promise.resolve(true);
+        return Promise.resolve(true)
 
-    } catch (error) {
+    } catch (e) {
+        if (e instanceof PupeteerError) {
+            await models.Job.create({ id: jobId, status: "pupeteer error", errMessage: { msg: e.toString() } })
+        } else if (e instanceof Error) {
+            await models.Job.create({ id: jobId, status: "db error", errMessage: { msg: e.toString() } })
+        }
         Promise.reject(error);
     }
 })

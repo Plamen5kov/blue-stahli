@@ -13,6 +13,7 @@ require('../models/Education')(sequelize)
 require('../models/Experience')(sequelize)
 require('../models/Skills')(sequelize)
 require('../models/Users')(sequelize)
+require('../models/Jobs')(sequelize)
 
 sequelize
 	.authenticate()
