@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer')
-// const { Error } = require('../errors')
+const { PupeteerError } = require('../errors')
 
 const login = async (page, credentials, url) => {
     try {
@@ -28,7 +28,7 @@ const login = async (page, credentials, url) => {
         await page.click('.d-flex > .css-n6mdyb > .d-flex > .gd-ui-button > .css-2etp8b')
         await page.waitForNavigation()
     } catch (e) {
-        throw new Error(`Unable to login: check credentials: ${e.message}`)
+        throw new PupeteerError(`Unable to login: check credentials: ${e.message}`)
     }
 }
 
@@ -41,7 +41,7 @@ const logout = async (page) => {
         await page.evaluate(() => { document.querySelector('a[href="/logout.htm"]').click() })
         await page.waitForNavigation()
     } catch (e) {
-        throw new Error(`Unable to logout: ${e.message}`)
+        throw new PupeteerError(`Unable to logout: ${e.message}`)
     }
 }
 
@@ -58,7 +58,7 @@ const openProfile = async (page) => {
         await page.waitForSelector('div[class^=BadgeModalStyles__closeBtn]', { visible: true })
         await page.click('div[class^=BadgeModalStyles__closeBtn]', { visible: true })
     } catch (e) {
-        throw new Error(`Unable to open profile: ${e.message}`)
+        throw new PupeteerError(`Unable to open profile: ${e.message}`)
     }
 }
 
@@ -77,7 +77,7 @@ const downloadPdf = async (page, downloadPath) => {
             .click()
     })
     // } catch (e) {
-    //     throw new Error(`Unable to download pdf: ${e.message}`)
+    //     throw new PupeteerError(`Unable to download pdf: ${e.message}`)
     // }
 }
 
@@ -94,7 +94,7 @@ const viewAsEmployer = async (page) => {
                 .click()
         })
     } catch (e) {
-        throw new Error(`Unable to open view as employer view: ${e.message}`)
+        throw new PupeteerError(`Unable to open view as employer view: ${e.message}`)
     }
 }
 
@@ -177,11 +177,11 @@ const extractUserData = async (page) => {
             }
         })
     } catch (e) {
-        throw new Error(`Unable to extract user data: ${e.message}`)
+        throw new PupeteerError(`Unable to extract user data: ${e.message}`)
     }
 }
 
-const init = async (browserDownloadPath, credentials, url) => {
+const initializeBrowser = async () => {
     try {
         const browser = await puppeteer.launch({
             args: [
@@ -189,6 +189,17 @@ const init = async (browserDownloadPath, credentials, url) => {
                 '--disable-setuid-sandbox'
             ]
         })
+        return browser
+    } catch (e) {
+        throw new PupeteerError(`Unable to extract user data: ${e.message}`)
+    }
+}
+
+const init = async (browserDownloadPath, credentials, url) => {
+    try {
+
+        const browser = await initializeBrowser()
+
         const page = await browser.newPage()
 
         await login(page, credentials, url)
@@ -211,7 +222,7 @@ const init = async (browserDownloadPath, credentials, url) => {
 
         return extractedData
     } catch (e) {
-        throw new Error(`something happened: ${e.message}`)
+        throw new PupeteerError(`something happened: ${e.message}`)
     }
 }
 
