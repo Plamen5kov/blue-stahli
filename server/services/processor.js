@@ -21,6 +21,7 @@ jobQueue.process(paralellJobsRunningAtOneTime, async (job) => {
         const createdUser = await models.User.create({
             id: uuid.v4(),
             name: extractedData.userInfo.name,
+            email: username,
             about: extractedData.userInfo.about,
             pdfPath: extractedData.pathToPdf,
             experiences: extractedData.experience,
@@ -56,8 +57,8 @@ jobQueue.process(paralellJobsRunningAtOneTime, async (job) => {
         if (e instanceof PupeteerError) {
             jobStatus.status = 'pupeteer error'
             jobStatus.save()
-        } else if (e instanceof Error) {
-            await models.Job.create({ id: jobId, status: "db error", errMessage: { msg: e.toString() } })
+        } else {
+            if (e.errors) jobStatus.errMessage = { msg: e.errors }
             jobStatus.status = 'db error'
             jobStatus.save()
         }

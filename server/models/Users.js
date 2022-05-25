@@ -10,7 +10,12 @@ module.exports = (sequelize) => {
     },
     name: {
       type: STRING,
+      allowNull: false
+    },
+    email: {
+      type: STRING,
       allowNull: false,
+      unique: true
     },
     about: {
       type: STRING

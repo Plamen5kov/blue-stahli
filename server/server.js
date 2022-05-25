@@ -8,6 +8,7 @@ const errorHandlerMiddleware = require('./middleware/error-handler')
 // ROUTES
 const contentProvider = require('./routes/content-provider')
 const job = require('./routes/job')
+const user = require('./routes/user')
 
 // MIDDLEWARE
 app.use(express.json())
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: true }))
 //REQUEST HANDLERS
 app.use('/api/v1/contentProvider', contentProvider)
 app.use('/api/v1/job', job)
+app.use('/api/v1/user', user)
 
 // ERROR HANDLING MIDDLEWARE
 app.use(notFoundMiddleware)
